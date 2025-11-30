@@ -1,0 +1,11 @@
+{
+    "name": "hidenari/model-sample",
+    "description": "model sample",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Hidenari\\ModelSample\\": "src/"
+        }
+    },
+    "require": {}
+}
