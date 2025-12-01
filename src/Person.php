@@ -2,19 +2,13 @@
 
 namespace Hidenari\ModelSample;
 
-class Person
+class PersonOne
 {
     public function __construct(
-        // all public pattern
-        public string $forename
+        public string $name
         = 'taro' {
-            get => 'Mr.'.$this->forename;
-            set => $this->forename = ucwords($value);
-        },
-        // set private get public pattern
-        public private(set) string $surname
-        = 'yamada' {
-            get => 'Mr.'.$this->surname;
+            get => 'Mr.'.$this->name;
+            set => $this->name = ucwords($value);
         },
         public int $age
         = 15 {
@@ -23,9 +17,29 @@ class Person
         }
     ) {
     }
+}
 
-    public function setSurname(string $surname)
+class PersonTwo
+{
+    public function __construct(
+        public private(set) string $name
+        = 'taro' {
+            get => 'Mr.'.$this->name;
+        },
+        public private(set) int $age
+        = 15 {
+            get => $this->age;
+        }
+    ) {
+    }
+
+    public function setName(string $name)
     {
-        $this->surname = ucwords($surname);
+        $this->name = ucwords($name);
+    }
+
+    public function setAge(int $age)
+    {
+        $this->age = $age;
     }
 }
