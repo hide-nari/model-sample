@@ -8,5 +8,7 @@
             "Hidenari\\ModelSample\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+      "php": "^8.4"
+    }
 }
