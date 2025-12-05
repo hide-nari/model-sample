@@ -2,7 +2,7 @@
 
 namespace Hidenari\ModelSample;
 
-class Person
+class Person implements PersonInterface
 {
     public function __construct(
         public string $name

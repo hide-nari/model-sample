@@ -2,7 +2,7 @@
 
 namespace Hidenari\ModelSample;
 
-class PersonCapsule
+class PersonCapsule implements PersonCapsuleInterface
 {
     public function __construct(
         public private(set) string $name
