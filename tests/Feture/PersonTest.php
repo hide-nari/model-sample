@@ -24,5 +24,5 @@ test('person model with name,age parameter', function () {
         ->and($person->name === 'Jiro')->toBeFalse()
         ->and($person->name === 'jiro')->toBeFalse()
         ->and($person->age === 20)->toBeTrue()
-        ->and($person->age === 15)->toBeFalse();;
+        ->and($person->age === 15)->toBeFalse();
 });

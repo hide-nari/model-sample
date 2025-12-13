@@ -16,11 +16,13 @@ class PersonCapsule implements PersonCapsuleInterface
     ) {
     }
 
+    #[\Override]
     public function setName(string $name)
     {
         $this->name = ucwords($name);
     }
 
+    #[\Override]
     public function setAge(int $age)
     {
         $this->age = $age;
