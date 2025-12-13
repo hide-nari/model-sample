@@ -23,5 +23,6 @@ test('person model with name,age parameter', function () {
     expect($person->name === 'Mr.Jiro')->toBeTrue()
         ->and($person->name === 'Jiro')->toBeFalse()
         ->and($person->name === 'jiro')->toBeFalse()
-        ->and($person->age === 20)->toBeTrue();
+        ->and($person->age === 20)->toBeTrue()
+        ->and($person->age === 15)->toBeFalse();;
 });

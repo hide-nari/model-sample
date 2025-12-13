@@ -5,6 +5,7 @@ use Hidenari\ModelSample\PersonCapsule;
 test('person capsule model no parameter', function () {
     $person = new PersonCapsule;
     expect($person->name === 'Mr.taro')->toBeTrue()
+        ->and($person->name === 'Taro')->toBeFalse()
         ->and($person->name === 'taro')->toBeFalse()
         ->and($person->age === 15)->toBeTrue();
 
@@ -20,6 +21,7 @@ test('person capsule model no parameter', function () {
 test('person capsule with name age parameter', function () {
     $person = new PersonCapsule('jiro', 20);
     expect($person->name === 'Mr.jiro')->toBeTrue()
+        ->and($person->name === 'Jiro')->toBeFalse()
         ->and($person->name === 'jiro')->toBeFalse()
         ->and($person->age === 20)->toBeTrue()
         ->and($person->age === 15)->toBeFalse();
