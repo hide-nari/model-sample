@@ -2,6 +2,8 @@
 
 namespace Hidenari\ModelSample;
 
+use Override;
+
 class PersonCapsule implements PersonCapsuleInterface
 {
     public function __construct(
@@ -16,13 +18,13 @@ class PersonCapsule implements PersonCapsuleInterface
     ) {
     }
 
-    #[\Override]
+    #[Override]
     public function setName(string $name): void
     {
         $this->name = ucwords($name);
     }
 
-    #[\Override]
+    #[Override]
     public function setAge(int $age): void
     {
         $this->age = $age;
