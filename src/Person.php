@@ -4,7 +4,11 @@ namespace Hidenari\ModelSample;
 
 class Person implements PersonInterface
 {
+    use ValidateNameLength;
+    use ValidateOverFifteen;
+
     public function __construct(
+        #[ValidateLength(4, 15)]
         public string $name
         = 'taro' {
             get => 'Mr.'.$this->name;
@@ -16,5 +20,7 @@ class Person implements PersonInterface
             set => $this->age = $value;
         }
     ) {
+        $this->validateNameLength($this->name);
+        $this->validateOverFifteen();
     }
 }

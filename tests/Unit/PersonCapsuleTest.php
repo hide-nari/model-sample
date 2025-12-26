@@ -21,12 +21,12 @@ test('person capsule model no parameter', function () {
 test('person capsule model no parameter with name set error', function () {
     $person = new PersonCapsule;
     $person->name = 'jiro';
-})->throws(Error::class);;
+})->throws(Error::class);
 
 test('person capsule model no parameter with age set error', function () {
     $person = new PersonCapsule;
     $person->age = 15;
-})->throws(Error::class);;
+})->throws(Error::class);
 
 test('person capsule with name age parameter', function () {
     $person = new PersonCapsule('jiro', 20);

@@ -26,3 +26,21 @@ test('person model with name,age parameter', function () {
         ->and($person->age === 20)->toBeTrue()
         ->and($person->age === 15)->toBeFalse();
 });
+
+test('person model with kanji name,age parameter', function () {
+    $person = new Person('原', 20);
+    expect($person->name === 'Mr.原')->toBeTrue()
+        ->and($person->age === 20)->toBeTrue();
+});
+
+test('person model with name min length parameter', function () {
+    new Person('', 20);
+})->throws(\InvalidArgumentException::class, 'Invalid name string');
+
+test('person model with name over length parameter', function () {
+    new Person('1234567890123', 20);
+})->throws(\InvalidArgumentException::class, 'Invalid name string');
+
+test('person model with age under 15 parameter', function () {
+    new Person('taro', 14);
+})->throws(\InvalidArgumentException::class, 'under fifteen');

@@ -14,7 +14,8 @@
     }
   },
   "require": {
-    "php": "^8.4"
+    "php": "^8.4",
+    "ext-http": "*"
   },
   "require-dev": {
     "pestphp/pest": "^4.1",
