@@ -2,9 +2,11 @@
 
 namespace Hidenari\ModelSample;
 
+use Hidenari\ModelSample\Interface\AgeCapsuleInterface;
+use Hidenari\ModelSample\Interface\NameCapsuleInterface;
 use Override;
 
-class PersonCapsule implements PersonCapsuleInterface
+class PersonCapsule implements AgeCapsuleInterface, NameCapsuleInterface
 {
     use ValidateNameLength;
     use ValidateOverFifteen;

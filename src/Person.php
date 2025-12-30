@@ -2,7 +2,10 @@
 
 namespace Hidenari\ModelSample;
 
-class Person implements PersonInterface
+use Hidenari\ModelSample\Interface\AgeInterface;
+use Hidenari\ModelSample\Interface\NameInterface;
+
+class Person implements AgeInterface, NameInterface
 {
     use ValidateNameLength;
     use ValidateOverFifteen;
