@@ -13,12 +13,12 @@ class Person implements AgeInterface, NameInterface
     public function __construct(
         #[ValidateLength(4, 15)]
         public string $name
-        = 'taro' {
+        = NameInterface::INIT_NAME {
             get => 'Mr.'.$this->name;
             set => $this->name = ucwords($value);
         },
         public int $age
-        = 15 {
+        = AgeInterface::INIT_AGE {
             get => $this->age;
             set => $this->age = $value;
         }

@@ -14,11 +14,11 @@ class PersonCapsule implements AgeCapsuleInterface, NameCapsuleInterface
     public function __construct(
         #[ValidateLength(4, 15)]
         private(set) string $name
-        = 'taro' {
+        = NameCapsuleInterface::INIT_NAME {
             get => 'Mr.'.$this->name;
         },
         private(set) int $age
-        = 15 {
+        = AgeCapsuleInterface::INIT_AGE {
             get => $this->age;
         }
     ) {

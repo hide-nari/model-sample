@@ -4,6 +4,8 @@ namespace Hidenari\ModelSample\Interface;
 
 interface NameCapsuleInterface
 {
+    public const string INIT_NAME = 'taro';
+
     public string $name {
         get;
     }
