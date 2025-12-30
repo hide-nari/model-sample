@@ -2,10 +2,8 @@
 
 namespace Hidenari\ModelSample\Interface;
 
-interface AgeInterface
+interface AgeInterface extends AgeAbstractInterface
 {
-    const int INIT_AGE = 15;
-
     public string $name {
         get;
         set;

@@ -2,10 +2,8 @@
 
 namespace Hidenari\ModelSample\Interface;
 
-interface NameInterface
+interface NameInterface extends NameAbstractInterface
 {
-    public const string INIT_NAME = 'taro';
-
     public string $name {
         get;
         set;
