@@ -8,7 +8,7 @@ enum GradeEnum
     case SILVER;
     case BRONZE;
 
-    public function upGrade($grade)
+    public function upGrade(GradeEnum $grade): GradeEnum
     {
         return match ($grade) {
             GradeEnum::BRONZE => GradeEnum::SILVER,
@@ -17,7 +17,7 @@ enum GradeEnum
         };
     }
 
-    public function downGrade($grade)
+    public function downGrade(GradeEnum $grade): GradeEnum
     {
         return match ($grade) {
             GradeEnum::GOLD => GradeEnum::SILVER,

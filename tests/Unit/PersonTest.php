@@ -42,7 +42,7 @@ test('person model no parameter with enum upGrade function error pattern',
         for ($i = 0; $i < 3; $i++) {
             $person->grade = $person->grade->upGrade($person->grade);
         }
-    })->throws(InvalidArgumentException::class, 'Unexpected Enum value');;
+    })->throws(InvalidArgumentException::class, 'Unexpected Enum value');
 
 test('person model no parameter with enum downGrade function error pattern',
     function () {
@@ -54,7 +54,7 @@ test('person model no parameter with enum downGrade function error pattern',
             ->and($person->grade === GradeEnum::BRONZE)->toBeTrue();
 
         $person->grade = $person->grade->downGrade($person->grade);
-    })->throws(InvalidArgumentException::class, 'Unexpected Enum value');;
+    })->throws(InvalidArgumentException::class, 'Unexpected Enum value');
 
 test('person model no parameter with enum function', function () {
     $person = new Person;
@@ -76,7 +76,6 @@ test('person model no parameter with enum function', function () {
     $person->grade = $person->grade->downGrade($person->grade);
     expect($person->grade === GradeEnum::BRONZE)->toBeTrue();
 });
-
 
 test('person model with name,age parameter', function () {
     $person = new Person('jiro', 20, GradeEnum::BRONZE);
