@@ -30,6 +30,54 @@ test('person model no parameter', function () {
         ->and($person->grade === GradeEnum::SILVER)->toBeFalse();
 });
 
+test('person model no parameter with enum upGrade function error pattern',
+    function () {
+        $person = new Person;
+        expect($person->name === 'Mr.Taro')->toBeTrue()
+            ->and($person->name === 'Taro')->toBeFalse()
+            ->and($person->name === 'taro')->toBeFalse()
+            ->and($person->age === 15)->toBeTrue()
+            ->and($person->grade === GradeEnum::BRONZE)->toBeTrue();
+
+        for ($i = 0; $i < 3; $i++) {
+            $person->grade = $person->grade->upGrade($person->grade);
+        }
+    })->throws(InvalidArgumentException::class, 'Unexpected Enum value');;
+
+test('person model no parameter with enum downGrade function error pattern',
+    function () {
+        $person = new Person;
+        expect($person->name === 'Mr.Taro')->toBeTrue()
+            ->and($person->name === 'Taro')->toBeFalse()
+            ->and($person->name === 'taro')->toBeFalse()
+            ->and($person->age === 15)->toBeTrue()
+            ->and($person->grade === GradeEnum::BRONZE)->toBeTrue();
+
+        $person->grade = $person->grade->downGrade($person->grade);
+    })->throws(InvalidArgumentException::class, 'Unexpected Enum value');;
+
+test('person model no parameter with enum function', function () {
+    $person = new Person;
+    expect($person->name === 'Mr.Taro')->toBeTrue()
+        ->and($person->name === 'Taro')->toBeFalse()
+        ->and($person->name === 'taro')->toBeFalse()
+        ->and($person->age === 15)->toBeTrue()
+        ->and($person->grade === GradeEnum::BRONZE)->toBeTrue();
+
+    $person->grade = $person->grade->upGrade($person->grade);
+    expect($person->grade === GradeEnum::SILVER)->toBeTrue();
+
+    $person->grade = $person->grade->upGrade($person->grade);
+    expect($person->grade === GradeEnum::GOLD)->toBeTrue();
+
+    $person->grade = $person->grade->downGrade($person->grade);
+    expect($person->grade === GradeEnum::SILVER)->toBeTrue();
+
+    $person->grade = $person->grade->downGrade($person->grade);
+    expect($person->grade === GradeEnum::BRONZE)->toBeTrue();
+});
+
+
 test('person model with name,age parameter', function () {
     $person = new Person('jiro', 20, GradeEnum::BRONZE);
     expect($person->name === 'Mr.Jiro')->toBeTrue()
