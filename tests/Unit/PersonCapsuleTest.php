@@ -1,5 +1,6 @@
 <?php
 
+use Hidenari\ModelSample\Enum\GradeEnum;
 use Hidenari\ModelSample\PersonCapsule;
 
 test('person capsule model no parameter', function () {
@@ -7,7 +8,8 @@ test('person capsule model no parameter', function () {
     expect($person->name === 'Mr.taro')->toBeTrue()
         ->and($person->name === 'Taro')->toBeFalse()
         ->and($person->name === 'taro')->toBeFalse()
-        ->and($person->age === 15)->toBeTrue();
+        ->and($person->age === 15)->toBeTrue()
+        ->and($person->grade === GradeEnum::BRONZE)->toBeTrue();
 
     $person->setName('jiro');
     expect($person->name === 'Mr.Jiro')->toBeTrue()
@@ -16,6 +18,16 @@ test('person capsule model no parameter', function () {
     $person->setAge(20);
     expect($person->age === 20)->toBeTrue()
         ->and($person->age === 15)->toBeFalse();
+
+    $person->setGrade(GradeEnum::SILVER);
+    expect($person->grade === GradeEnum::SILVER)->toBeTrue()
+        ->and($person->grade === GradeEnum::BRONZE)->toBeFalse()
+        ->and($person->grade === GradeEnum::GOLD)->toBeFalse();
+
+    $person->setGrade(GradeEnum::GOLD);
+    expect($person->grade === GradeEnum::GOLD)->toBeTrue()
+        ->and($person->grade === GradeEnum::BRONZE)->toBeFalse()
+        ->and($person->grade === GradeEnum::SILVER)->toBeFalse();
 });
 
 test('person capsule model no parameter with name set error', function () {
@@ -29,12 +41,15 @@ test('person capsule model no parameter with age set error', function () {
 })->throws(Error::class);
 
 test('person capsule with name age parameter', function () {
-    $person = new PersonCapsule('jiro', 20);
+    $person = new PersonCapsule('jiro', 20,GradeEnum::BRONZE);
     expect($person->name === 'Mr.jiro')->toBeTrue()
         ->and($person->name === 'Jiro')->toBeFalse()
         ->and($person->name === 'jiro')->toBeFalse()
         ->and($person->age === 20)->toBeTrue()
-        ->and($person->age === 15)->toBeFalse();
+        ->and($person->age === 15)->toBeFalse()
+        ->and($person->grade === GradeEnum::BRONZE)->toBeTrue()
+        ->and($person->grade === GradeEnum::SILVER)->toBeFalse()
+        ->and($person->grade === GradeEnum::GOLD)->toBeFalse();
 });
 
 test('person model with kanji name,age parameter', function () {

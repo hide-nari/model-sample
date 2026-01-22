@@ -2,6 +2,7 @@
 
 namespace Hidenari\ModelSample;
 
+use Hidenari\ModelSample\Enum\GradeEnum;
 use Hidenari\ModelSample\Interface\AgeCapsuleInterface;
 use Hidenari\ModelSample\Interface\NameCapsuleInterface;
 use Hidenari\ModelSample\Validate\ValidateLength;
@@ -23,6 +24,10 @@ class PersonCapsule implements AgeCapsuleInterface, NameCapsuleInterface
         private(set) int $age
         = AgeCapsuleInterface::INIT_AGE {
             get => $this->age;
+        },
+        private(set) GradeEnum $grade
+        = GradeEnum::BRONZE {
+            get => $this->grade;
         }
     ) {
         $this->validateNameLength();
@@ -39,5 +44,10 @@ class PersonCapsule implements AgeCapsuleInterface, NameCapsuleInterface
     public function setAge(int $age): void
     {
         $this->age = $age;
+    }
+
+    public function setGrade(GradeEnum $grade): void
+    {
+        $this->grade = $grade;
     }
 }
